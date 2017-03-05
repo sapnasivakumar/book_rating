@@ -14,6 +14,10 @@ module.exports = {
       "host": "127.0.0.1",
       "dialect": "mysql"
     },
+    "staging": {
+        "url": process.env.DATABASE_URL,
+        "dialect": "postgres"
+    },
     "production": {
       "username": "root",
       "password": "test",
