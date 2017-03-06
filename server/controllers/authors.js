@@ -30,7 +30,6 @@ module.exports =  {
 
     //Create a new author using model.create()
     create:  function(req, res) {
-        console.log("req params $$$$",req);
         Author.create(req.body)
             .then(function (newAuthor) {
                 res.status(200).json(newAuthor);

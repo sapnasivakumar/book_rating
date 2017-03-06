@@ -3,6 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "test": "NODE_ENV=test node_modules/.bin/gulp test:client && NODE_ENV=test node_modules/.bin/gulp test:server",
+    "prestart": "node_modules/.bin/gulp && node_modules/.bin/sequelize db:migrate",
     "start": "node ./app.js"
   },
   "dependencies": {
@@ -18,5 +20,14 @@
     "sequelize": "^3.30.2",
     "sequelize-cli": "^2.5.1",
     "serve-favicon": "~2.3.2"
-  }
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "gulp": "^3.9.1",
+    "gulp-istanbul": "^1.1.1",
+    "gulp-mocha": "^4.0.1",
+    "mocha": "^3.2.0",
+    "node-mocks-http": "^1.6.1"
+  },
+
 }
