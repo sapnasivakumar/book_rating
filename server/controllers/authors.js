@@ -28,10 +28,13 @@ module.exports =  {
             });
     },
 
-    //Create a new author using model.create()
+//Create a new author using model.create()
     create:  function(req, res) {
+        console.log("Author create called with ", req.body);
+        console.log("Author create called with ", req.url);
         Author.create(req.body)
             .then(function (newAuthor) {
+                console.log("author controller call done ######");
                 res.status(200).json(newAuthor);
             })
             .catch(function (error){

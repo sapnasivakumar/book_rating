@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+</head>
+<body>
+
+</body>
+<script>
+    $(document).ready(function() {
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "http://localhost:8000/authors",
+            "method": "POST",
+            "headers": {
+                "content-type": "application/json",
+                "cache-control": "no-cache",
+                "postman-token": "32bfb9f6-af11-a7f2-f67e-1de258564406"
+            },
+            "processData": false,
+            "data": "{\n\"name\" : \"postman\",\n\"bio\" : \"from postman\"\n}"
+        }
+
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+        });
+    });
+</script>
+</html>

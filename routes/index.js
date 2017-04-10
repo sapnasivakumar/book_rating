@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var authors = require('../server/controllers/authors'),
     books = require('../server/controllers/books');
+Author = require('../server/models/').Author;
 
 router.get('/authors', authors.index);
 router.get('/authors/:id', authors.show);
