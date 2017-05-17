@@ -13,8 +13,8 @@ describe('Server controller tests', function () {
             .sync({ force: true })
             .then(function () {
                 models.Author.bulkCreate([
-                    { name: 'Test author 1', bio: 'Test bio' },
-                    { name: 'Test author 2', bio: 'Test bio' }
+                    { name: 'Test author 1', bio: 'Test bio', email: 'kjl@lo.cjk' },
+                    { name: 'Test author 2', bio: 'Test bio', email: 'kjl@lo.cjkdf' }
                 ]);
             });
     });
@@ -28,7 +28,7 @@ describe('Server controller tests', function () {
     describe('Author tests', function () {
         it('Should create a new author', function (done) {
             var req = httpMocks.createRequest({
-                body: { name: 'Test Author', bio: 'Test Bio' }
+                body: { name: 'Test Author', bio: 'Test Bio', email: 'jkk@yui.com' }
             });
 
             ctrl.create(req, res);
@@ -64,10 +64,25 @@ describe('Server controller tests', function () {
             });
         });
 
+
+        it('Should fetch authors by email', function (done) {
+            req = httpMocks.createRequest({
+                params: {email: 'kjl@lo.cjk'}
+            });
+            ctrl.showbyEmail(req, res);
+            res.on('end', function () {
+                var response = JSON.parse(res._getData());
+                expect(res.statusCode).to.equal(200);
+                expect(response.name).to.equal('Test author 1');
+                done();
+            });
+        });
+
+
         it('Should update an author', function (done) {
             req = httpMocks.createRequest({
                 params: { id: 1 },
-                body: { name: 'Updated name', bio: 'Updated Bio' }
+                body: { name: 'Updated name', bio: 'Updated Bio' , email: 'jjk@klk.cd'}
             });
 
             ctrl.update(req, res);

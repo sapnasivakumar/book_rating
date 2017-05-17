@@ -1,8 +1,14 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
   var Author = sequelize.define('Author', {
-    name: DataTypes.STRING,
-    bio: DataTypes.TEXT
+    name: {type: DataTypes.STRING},
+    bio: {type: DataTypes.TEXT},
+    email: {
+                type: DataTypes.STRING,
+                allowNull: false,
+                validate:{isEmail: true}
+
+            }
   }, {
     underscored: true,
     classMethods: {

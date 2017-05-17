@@ -28,6 +28,20 @@ module.exports =  {
             });
     },
 
+    showbyEmail: function(req,res) {
+        Author.findOne({
+            where: {
+                email: req.params.email
+            }
+        })
+            .then(function (author){
+                res.status(200).json(author);
+            })
+            .catch(function (error){
+                res.status(500).json(error);
+            });
+    },
+
 //Create a new author using model.create()
     create:  function(req, res) {
         console.log("Author create called with ", req.body);

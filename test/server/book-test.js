@@ -13,8 +13,8 @@ describe('Server controller tests', function () {
             .sync({ force: true })
             .then(function () {
                 models.Author.bulkCreate([
-                    { name: 'Test author 1', bio: 'Test bio' },
-                    { name: 'Test author 2', bio: 'Test bio' }
+                    { name: 'Test author 1', bio: 'Test bio', email: 'jkl@jl;.sds' },
+                    { name: 'Test author 2', bio: 'Test bio', email: 'jkl@jl;.sds' }
                 ]);
                 models.Book.bulkCreate([
                     { name: 'Test book 1', isbn: 1234, description: 'sample data', author_id: 1, rating: 4 },
@@ -76,10 +76,10 @@ describe('Server controller tests', function () {
 
             ctrl.update(req, res);
             res.on('end', function () {
-                models.Book.findById(1)
+                models.Book.findById(2)
                     .then(function (result) {
                         var updatedBook = result.get({ plain: true });
-                        expect(updatedBook.name).to.equal('Updated book 2');
+                        expect(updatedBook.name).to.equal('updated book 2');
                         expect(updatedBook.description).to.equal('updated data 2');
                     });
                 done();

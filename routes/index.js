@@ -6,6 +6,7 @@ Author = require('../server/models/').Author;
 
 router.get('/authors', authors.index);
 router.get('/authors/:id', authors.show);
+router.get('/authors/email/:email', authors.showbyEmail);
 router.post('/authors', authors.create);
 router.put('/authors/:id', authors.update);
 router.delete('/authors', authors.delete);
